@@ -1,0 +1,32 @@
+IgnoreUnknown GSSAPIKeyExchange
+
+Host home
+  HostName 128.12.90.76
+  User odin
+  ForwardX11 yes
+  ForwardX11Trusted yes
+Host corn corn?? rye rye?? scail rice rice?? wheat wheat?? oat oat??
+  HostName %h.stanford.edu
+Host corn corn?? rye rye?? scail rice rice?? wheat wheat?? oat oat??
+  HostName %h.stanford.edu
+  User zhenpeng
+  ForwardX11 yes
+  ForwardX11Trusted yes
+Host rice rice?? rice??.stanford.edu
+  HostKeyAlias rice.stanford.edu
+Host wheat wheat?? wheat??.stanford.edu
+  HostKeyAlias wheat.stanford.edu
+Host oat oat?? oat??.stanford.edu
+  HostKeyAlias oat.stanford.edu
+Host rice rice.stanford.edu rice?? rice??.stanford.edu
+  GSSAPIDelegateCredentials yes
+  ControlMaster auto
+  ControlPersist yes
+  ServerAliveInterval 60
+Host *
+  UseKeychain yes
+  GSSAPIKeyExchange yes
+  GSSAPIAuthentication yes
+  ControlPath ~/.ssh/%r@%h:%p
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_rsa
