@@ -1,4 +1,9 @@
-source /Users/odin/antigen.zsh
+if [[ $OSTYPE == *linux* ]]; then
+    source /home/odin/antigen.zsh
+else
+    source /Users/odin/antigen.zsh
+fi
+
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
@@ -17,8 +22,17 @@ antigen theme mh
 # Tell Antigen that you're done.
 antigen apply
 
-export PATH="/Users/odin/miniconda3/bin:$PATH"
-export CUDA_HOME="/usr/local/cuda"
-export PATH="$CUDA_HOME/bin:$PATH"
-export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
-export LD_LIBRARY_PATH="$DYLD_LIBRARY_PATH"
+if [[ $OSTYPE == *linux* ]]; then
+    export PATH="/home/odin/miniconda3/bin:$PATH"
+    export CUDA_HOME="/usr/local/cuda"
+    export PATH="$CUDA_HOME/bin:$PATH"
+    export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64"
+    export PATH="$PATH:$HOME/.cargo/bin"
+else
+    export PATH="/Users/odin/miniconda3/bin:$PATH"
+    export CUDA_HOME="/usr/local/cuda"
+    export PATH="$CUDA_HOME/bin:$PATH"
+    export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="$DYLD_LIBRARY_PATH"
+fi

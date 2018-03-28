@@ -140,7 +140,7 @@ set t_Co=256
 let g:solarized_termcolors=256
 set background=light
 let g:rehash256=1
-color papercolor
+color PaperColor
 " color molokai
 " Search settings
 set hlsearch " hilight
