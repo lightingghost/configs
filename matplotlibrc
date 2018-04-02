@@ -229,7 +229,8 @@ text.usetex         : True  # use latex for all text handling. The following fon
                               # matplotlib mailing list
 #text.latex.unicode : False # use "ucs" and "inputenc" LaTeX packages for handling
                             # unicode strings.
-#text.latex.preamble :  # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
+text.latex.preamble :  \usepackage{helvet}, \usepackage{sansmath}, \sansmath
+                            # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
                             # AND IS THEREFORE UNSUPPORTED. PLEASE DO NOT ASK FOR HELP
                             # IF THIS FEATURE DOES NOT DO WHAT YOU EXPECT IT TO.
                             # preamble is a comma separated list of LaTeX statements
@@ -271,9 +272,9 @@ text.usetex         : True  # use latex for all text handling. The following fon
 # Note that this "custom" mode is unsupported and may go away in the
 # future.
 #mathtext.cal : cursive
-#mathtext.rm  : serif
+mathtext.rm  : sans
 #mathtext.tt  : monospace
-#mathtext.it  : serif:italic
+mathtext.it  : sans:italic
 #mathtext.bf  : serif:bold
 #mathtext.sf  : sans
 #mathtext.fontset : dejavusans # Should be 'dejavusans' (default),
