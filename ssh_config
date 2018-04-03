@@ -7,8 +7,23 @@ Host home
   ForwardX11Trusted yes
 Host corn corn?? rye rye?? scail rice rice?? wheat wheat?? oat oat??
   HostName %h.stanford.edu
-Host corn corn?? rye rye?? scail rice rice?? wheat wheat?? oat oat??
+Host corn corn?? rye rye?? scail rice rice?? wheat wheat?? oat oat?? 
   HostName %h.stanford.edu
+  User zhenpeng
+  ForwardX11 yes
+  ForwardX11Trusted yes
+Host sherlock
+  HostName login.sherlock.stanford.edu
+  GSSAPIDelegateCredentials yes
+  ControlMaster auto
+  ControlPersist yes
+  User zhenpeng
+  ForwardX11 yes
+  ForwardX11Trusted yes
+Host sh-ln??
+  GSSAPIDelegateCredentials yes
+  ControlMaster auto
+  ControlPersist yes
   User zhenpeng
   ForwardX11 yes
   ForwardX11Trusted yes
@@ -22,7 +37,6 @@ Host rice rice.stanford.edu rice?? rice??.stanford.edu
   GSSAPIDelegateCredentials yes
   ControlMaster auto
   ControlPersist yes
-  ServerAliveInterval 60
 Host *
   UseKeychain yes
   GSSAPIKeyExchange yes
