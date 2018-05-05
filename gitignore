@@ -1,0 +1,24 @@
+#OS files
+.DS_Store
+
+# Editor files
+/.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+**.swp
+*.sw*
+
+# Logs
+logs
+log
+ckpt
+*.log
+
+# Runtime data
+pids
+__pycache__
+*.pid
+*.seed
+*.pid.lock
