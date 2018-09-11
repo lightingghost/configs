@@ -11,14 +11,14 @@
 *.sw*
 
 # Logs
-logs
-log
-ckpt
+/logs
+/log
+/ckpt
 *.log
 
 # Runtime data
 pids
-__pycache__
+/__pycache__
 *.pid
 *.seed
 *.pid.lock
