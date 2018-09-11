@@ -69,7 +69,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
 "tagbar
-nnoremap <Leader>lt :TagbarToggle<CR> 
+nnoremap <Leader>tt :TagbarToggle<CR> 
 
 "Nerdtree
 nmap <Leader>ft :NERDTreeToggle<CR>

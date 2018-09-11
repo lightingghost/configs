@@ -1,7 +1,7 @@
 IgnoreUnknown GSSAPIKeyExchange
 
 Host home
-  HostName 128.12.90.76
+  HostName 128.12.181.136
   User odin
   ForwardX11 yes
   ForwardX11Trusted yes
