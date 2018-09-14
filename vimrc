@@ -26,6 +26,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'hdima/python-syntax'
 Plugin 'darfink/vim-plist'
+" automatically adjusts 'shiftwidth' and 'expandtab' 
+" heuristically based on the current file
+Plugin 'tpope/vim-sleuth'
 
 " UnltSnips
 Plugin 'SirVer/ultisnips'
@@ -116,8 +119,8 @@ nmap <Leader>p "+p
 filetype indent on
 set autoindent
 set smartindent
-set tabstop=4
-set shiftwidth=4
+"set tabstop=4
+"set shiftwidth=4
 set expandtab
 """" 3. Vim Appearance.
 "fonts
