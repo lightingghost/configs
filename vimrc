@@ -114,6 +114,8 @@ nmap k gk
 " copy to / paste from system clipboard
 vnoremap <Leader>y "+y
 nmap <Leader>p "+p
+" split windows below
+set splitbelow
 
 " Tab settings
 filetype indent on
