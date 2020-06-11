@@ -143,7 +143,7 @@ set guioptions-=T
 " color
 set t_Co=256
 let g:solarized_termcolors=256
-set background=light
+set background=dark
 let g:rehash256=1
 color PaperColor
 " color molokai

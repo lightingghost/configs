@@ -23,18 +23,37 @@ antigen theme mh
 antigen apply
 
 if [[ $OSTYPE == *linux* ]]; then
-    export PATH="/home/odin/miniconda3/bin:$PATH"
+# export PATH="/home/odin/miniconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
     export CUDA_HOME="/usr/local/cuda"
     export PATH="$CUDA_HOME/bin:$PATH"
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64"
     export PATH="$PATH:$HOME/.cargo/bin"
 else
-    export PATH="/Users/odin/miniconda3/bin:$PATH"
+# export PATH="/Users/odin/miniconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
     export CUDA_HOME="/usr/local/cuda"
     export PATH="$CUDA_HOME/bin:$PATH"
     export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
     export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib"
     export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/opt/intel/lib"
     export LD_LIBRARY_PATH="$DYLD_LIBRARY_PATH"
+    export PATH="$PATH:$HOME/local/bin"
 fi
+
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/odin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/odin/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/odin/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/odin/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
