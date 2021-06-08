@@ -1,61 +1,61 @@
 let mapleader=" "
-if has('nvim')
-    let s:editor_root=expand("~/.config/nvim")
-else
-    let s:editor_root=expand("~/.vim")
-endif
-"--------------------------------------------------------------------------
-"Vundle Env 
-set nocompatible              " be iMproved, required
-filetype off                  " required
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+let s:editor_root=expand("~/.vim")
+"if has('nvim')
+"    let s:editor_root=expand("~/.config/nvim")
+"else
+"    let s:editor_root=expand("~/.vim")
+"endif
+"-------------------------------------------------------------------------- vim-plug call plug#begin('~/.vim/plugged') 
+call plug#begin('~/.vim/plugged')
 
-Plugin 'Lokaltog/vim-powerline'
+Plug 'Lokaltog/vim-powerline'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plugin 'Valloric/YouCompleteMe'
 
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 
-Plugin 'majutsushi/tagbar'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'hdima/python-syntax'
-Plugin 'darfink/vim-plist'
+Plug 'majutsushi/tagbar'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'hdima/python-syntax'
+Plug 'darfink/vim-plist'
 " automatically adjusts 'shiftwidth' and 'expandtab' 
 " heuristically based on the current file
-Plugin 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'
 
 " UnltSnips
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 "colors-themes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'DrSpatula/vim-buddy'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'scheakur/vim-scheakur'
-Plugin 'atelierbram/vim-colors_atelier-schemes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'DrSpatula/vim-buddy'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'scheakur/vim-scheakur'
+Plug 'atelierbram/vim-colors_atelier-schemes'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
+"coc
+let g:coc_disable_startup_warning = 1
 
-"YCM Configuration
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-"YCM Color
-highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
-highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
-let g:ycm_complete_in_comments=1
-let g:ycm_collect_identifiers_from_tags_files=1
-set completeopt-=preview
-let g:ycm_cache_omnifunc=0     
-let g:ycm_seed_identifiers_with_syntax=1
+"coc use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" coc Use <Tab> and <S-Tab> to navigate the completion list
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 
 "vim-indent-guides configuration
 let g:indent_guides_enable_on_vim_startup =0

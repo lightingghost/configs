@@ -22,6 +22,8 @@ antigen theme mh
 # Tell Antigen that you're done.
 antigen apply
 
+setopt HIST_FIND_NO_DUPS
+
 if [[ $OSTYPE == *linux* ]]; then
 # export PATH="/home/odin/miniconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
     export CUDA_HOME="/usr/local/cuda"
@@ -57,3 +59,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+alias vim=nvim
+alias svim="sudo nvim"
+alias oldvim=vim
