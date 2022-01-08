@@ -32,6 +32,11 @@ ln -s ~/configs/tmux.conf.local ~/.tmux.conf.local
 ln -s ~/configs/zshrc ~/.zshrc
 curl -L git.io/antigen > ~/antigen.zsh
 
+
+# git
+git config --global user.email "zhenp3ngzhou@gmail.com"
+git config --global user.name "Zhenpeng Zhou"
+
 chsh -s /bin/zsh
 
 sudo scutil --set LocalHostName $COMPUTER_NAME
