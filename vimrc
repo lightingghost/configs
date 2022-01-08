@@ -5,13 +5,12 @@ let s:editor_root=expand("~/.vim")
 "else
 "    let s:editor_root=expand("~/.vim")
 "endif
-"-------------------------------------------------------------------------- vim-plug call plug#begin('~/.vim/plugged') 
+"-----------------------vim-plug-------------------- 
 call plug#begin('~/.vim/plugged')
 
-Plug 'Lokaltog/vim-powerline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'majutsushi/tagbar'
@@ -31,7 +30,6 @@ Plug 'honza/vim-snippets'
 "colors-themes
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
-Plug 'DrSpatula/vim-buddy'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'scheakur/vim-scheakur'
 Plug 'atelierbram/vim-colors_atelier-schemes'
@@ -96,9 +94,38 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
+
+" airline settings
+let g:airline#extensions#tabline#enabled = 2
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '|'
+let g:airline_powerline_fonts=1
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = '|'
+let g:airline_powerline_fonts=1
+if !exists('g:airline_symbols')
+    let g:airline_symbols={}
+endif
+let g:airline_symbols.colnr=" "
+let g:airline_symbols.linenr="<>"
+"let g:airline_theme='molokai'
+
 "1. Vim Behaviour.
 " Use filetype-based syntax hilighting, ftplugins, and indentation.
 syntax on
+
+if !&scrolloff
+  set scrolloff=3       " Show next 3 lines while scrolling.
+endif
+if !&sidescrolloff
+  set sidescrolloff=5   " Show next 5 columns while side-scrolling.
+endif
+set autoread                    " Automatically reread changed files without asking me anything
 " Use numbering. Don't use relative numbering as this is slow (especially in
 " .tex files).
 set number
@@ -143,7 +170,7 @@ set guioptions-=T
 " color
 set t_Co=256
 let g:solarized_termcolors=256
-set background=dark
+set background=light
 let g:rehash256=1
 color PaperColor
 " color molokai
@@ -158,5 +185,3 @@ set laststatus=2
 set cursorline
 " vim: set ft=vim foldmethod=marker ts=4 sw=4 tw=80 et :
 
-"powerline
-let g:Powerline_colorscheme='solarized256'
