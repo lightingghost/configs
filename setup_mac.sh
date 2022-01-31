@@ -36,6 +36,7 @@ curl -L git.io/antigen > ~/antigen.zsh
 # git
 git config --global user.email "zhenp3ngzhou@gmail.com"
 git config --global user.name "Zhenpeng Zhou"
+git config --global alias.amend 'commit --amend'
 
 chsh -s /bin/zsh
 

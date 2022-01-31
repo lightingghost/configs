@@ -62,3 +62,13 @@ unset __conda_setup
 alias vim=nvim
 alias svim="sudo nvim"
 alias oldvim=vim
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/zzhou3/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zzhou3/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/zzhou3/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zzhou3/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+alias startdev="gcloud compute instances start zzp-dev --project=devsnapchat --zone=us-west1-b"
+alias stopdev="gcloud compute instances stop zzp-dev --project=devsnapchat --zone=us-west1-b"
+alias sshdev="gcloud compute ssh zzp-dev --project=devsnapchat --zone=us-west1-b"
