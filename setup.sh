@@ -1,5 +1,5 @@
 
-COMPUTER_NAME="Toaster	
+COMPUTER_NAME="Toaster"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 # Mac OSX
@@ -12,16 +12,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew install tmux -q
 
     # Miniconda
-    CONDA_FILE_NAME = "Miniconda3-latest-Linux-x86_64.sh"
+    CONDA_FILE_NAME="Miniconda3-latest-Linux-x86_64.sh"
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
     # Install
     sudo apt update
-    sudo apt install -y neovim nodejs tmux
+    sudo apt install -y neovim nodejs tmux zsh
 
     # Miniconda
-    CONDA_FILE_NAME = "Miniconda3-latest-Linux-x86_64.sh"
+    CONDA_FILE_NAME="Miniconda3-latest-Linux-x86_64.sh"
 fi
 
 # Miniconda
@@ -33,6 +33,7 @@ rm ./$CONDA_FILE_NAME
 # neovim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+mkdir ~/.config/nvim
 ln -s ~/configs/vimrc ~/.vimrc
 ln -s ~/configs/init.vim ~/.config/nvim/init.vim
 conda install -c conda-forge neovim -y
@@ -58,7 +59,4 @@ chsh -s /bin/zsh
 #sudo scutil --set LocalHostName $COMPUTER_NAME
 #sudo scutil --set ComputerName $COMPUTER_NAME
 #sudo scutil --set HostName $COMPUTER_NAME
-
-
-
 
