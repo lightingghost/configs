@@ -71,4 +71,8 @@ if [ -f '/Users/zzhou3/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . 
 
 alias startdev="gcloud compute instances start zzp-dev --project=devsnapchat --zone=us-west1-b"
 alias stopdev="gcloud compute instances stop zzp-dev --project=devsnapchat --zone=us-west1-b"
+alias startgpu="gcloud compute instances start zzp-gpu --project=devsnapchat --zone=us-west1-b"
+alias stopgpu="gcloud compute instances stop zzp-gpu --project=devsnapchat --zone=us-west1-b"
 alias sshdev="ssh zzp-dev.us-west1-b.devsnapchat.snapint"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
