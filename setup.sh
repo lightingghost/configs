@@ -18,7 +18,15 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
     # Install
     sudo apt update
-    sudo apt install -y neovim nodejs tmux zsh
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    sudo apt install -y neovim nodejs tmux zsh make 
+
+    # Docker
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+    sudo apt install docker-ce
+    sudo usermod -a -G docker $USER
+    sudo chmod 666 /var/run/docker.sock
 
     # Miniconda
     CONDA_FILE_NAME="Miniconda3-latest-Linux-x86_64.sh"
