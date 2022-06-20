@@ -3,16 +3,25 @@ COMPUTER_NAME="Toaster"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 # Mac OSX
-
     # Install
-    yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install wget -q
-    brew install neovim -q
-    brew install node -q
-    brew install tmux -q
+    yes | sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/zzhou3/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    brew install wget neovim node tmux docker -q
+    brew tap microsoft/git
+    brew install --cask google-cloud-sdk microsoft-git -q
 
     # Miniconda
-    CONDA_FILE_NAME="Miniconda3-latest-Linux-x86_64.sh"
+    if [[ $(uname -m) == 'arm64' ]]; then
+        CONDA_FILE_NAME="Miniconda3-latest-MacOSX-arm64.sh" 
+    else
+        CONDA_FILE_NAME="Miniconda3-latest-MacOSX-x86_64.sh"
+    fi
+
+    #sudo scutil --set LocalHostName $COMPUTER_NAME
+    #sudo scutil --set ComputerName $COMPUTER_NAME
+    #sudo scutil --set HostName $COMPUTER_NAME
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
@@ -55,6 +64,15 @@ ln -s ~/configs/tmux.conf.local ~/.tmux.conf.local
 # zsh
 ln -s ~/configs/zshrc ~/.zshrc
 curl -L git.io/antigen > ~/antigen.zsh
+source ~/antigen.zsh
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' 's/white/blue/g' ~/.antigen/bundles/robbyrussell/oh-my-zsh/themes/mh.zsh-theme
+    sed -i '' 's/white/blue/g' ~/.antigen/bundles/robbyrussell/oh-my-zsh/themes/mh.zsh-theme.antigen-compat
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    sed -i 's/white/green/g' ~/.antigen/bundles/robbyrussell/oh-my-zsh/themes/mh.zsh-theme
+    sed -i 's/white/green/g' ~/.antigen/bundles/robbyrussell/oh-my-zsh/themes/mh.zsh-theme.antigen-compat
+    git config --global credential.helper store
+fi
 
 
 # git
@@ -64,7 +82,4 @@ git config --global alias.amend 'commit --amend'
 
 chsh -s /bin/zsh
 
-#sudo scutil --set LocalHostName $COMPUTER_NAME
-#sudo scutil --set ComputerName $COMPUTER_NAME
-#sudo scutil --set HostName $COMPUTER_NAME
 
