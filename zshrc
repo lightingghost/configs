@@ -64,16 +64,16 @@ alias vim=nvim
 alias svim="sudo nvim"
 alias oldvim=vim
 
+export GCLOUD_PATH="/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/zzhou3/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/zzhou3/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$GCLOUD_PATH/path.zsh.inc" ]; then . "$GCLOUD_PATH/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/zzhou3/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/zzhou3/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$GCLOUD_PATH/completion.zsh.inc" ]; then . "$GCLOUD_PATH/completion.zsh.inc"; fi
 
-alias startdev="gcloud compute instances start zzp-dev --project=devsnapchat --zone=us-west1-b"
-alias stopdev="gcloud compute instances stop zzp-dev --project=devsnapchat --zone=us-west1-b"
-alias startgpu="gcloud compute instances start zzp-gpu --project=devsnapchat --zone=us-west1-b"
-alias stopgpu="gcloud compute instances stop zzp-gpu --project=devsnapchat --zone=us-west1-b"
-alias sshdev="ssh zzp-dev.us-west1-b.devsnapchat.snapint"
+alias startcpu="gcloud compute instances start zzp-cpu --project=sc-lens-delivery --zone=us-west1-b"
+alias stopcpu="gcloud compute instances stop zzp-cpu --project=sc-lens-delivery --zone=us-west1-b"
+alias startgpu="gcloud compute instances start zzp-dev --project=sc-lens-delivery --zone=us-west1-b"
+alias stopgpu="gcloud compute instances stop zzp-dev --project=sc-lens-delivery --zone=us-west1-b"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
