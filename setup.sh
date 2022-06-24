@@ -8,9 +8,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/zzhou3/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    brew install wget neovim node tmux docker -q
+    brew install wget neovim node tmux -q
     brew tap microsoft/git
-    brew install --cask google-cloud-sdk microsoft-git -q
+    brew install --cask google-cloud-sdk microsoft-git docker -q
 
     # Miniconda
     if [[ $(uname -m) == 'arm64' ]]; then
