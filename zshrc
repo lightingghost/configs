@@ -31,6 +31,7 @@ if [[ $OSTYPE == *linux* ]]; then
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64"
     export PATH="$PATH:$HOME/.cargo/bin"
+    export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 else
 # export PATH="/Users/odin/miniconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
     export CUDA_HOME="/usr/local/cuda"
