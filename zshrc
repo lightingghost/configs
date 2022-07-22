@@ -10,6 +10,7 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle history-substring-search
+antigen bundle vi-mode
 
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -75,5 +76,10 @@ alias startcpu="gcloud compute instances start zzp-cpu --project=sc-lens-deliver
 alias stopcpu="gcloud compute instances stop zzp-cpu --project=sc-lens-delivery --zone=us-west1-b"
 alias startgpu="gcloud compute instances start zzp-dev --project=sc-lens-delivery --zone=us-west1-b"
 alias stopgpu="gcloud compute instances stop zzp-dev --project=sc-lens-delivery --zone=us-west1-b"
+alias starttpu="gcloud alpha compute tpus tpu-vm start zzp-dev-tpu --project=devsnapchat --zone=us-central1-a"
+alias stoptpu="gcloud alpha compute tpus tpu-vm stop zzp-dev-tpu --project=devsnapchat --zone=us-central1-a"
+alias sshtpu="gcloud compute firewall-rules create allow-ssh --direction=INGRESS --network=tpu --action=ALLOW --rules=tcp:22 --project=devsnapchat && gcloud alpha compute tpus tpu-vm ssh zzp-dev-tpu --project=devsnapchat --zone=us-central1-a --ssh-flag='-4 -L 9001:localhost:9001'"
+
+
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"

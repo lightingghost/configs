@@ -113,7 +113,7 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.colnr='|'
 let g:airline_symbols.linenr='|'
-let g:airline_theme='solarized'
+let g:airline_theme='papercolor'
 
 "1. Vim Behaviour.
 " Use filetype-based syntax hilighting, ftplugins, and indentation.
@@ -172,9 +172,9 @@ set t_Co=256
 let g:solarized_termcolors=256
 set background=light
 let g:rehash256=1
-"color PaperColor
+color PaperColor
 let g:molokai_original = 1
-color solarized
+"color solarized
 "color molokai
 " Search settings
 set hlsearch " hilight
