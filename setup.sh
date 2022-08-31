@@ -24,28 +24,47 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     #sudo scutil --set HostName $COMPUTER_NAME
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    . /etc/os-release
 
-    # Install
-    sudo apt update
-    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-    sudo apt install -y neovim nodejs tmux zsh make 
+    if [ "$ID" == "rhel" ]; then
+        # Install
+	sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+        curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+	sudo yum install -y neovim tmux zsh make 
+        sudo dnf module install nodejs:16
 
-    # Docker
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-    sudo apt install docker-ce
-    sudo usermod -a -G docker $USER
-    sudo chmod 666 /var/run/docker.sock
+        # Docker
+	sudo yum install -y yum-utils
+ 	sudo yum-config-manager \
+    		--add-repo \
+    		https://download.docker.com/linux/centos/docker-ce.repo
+	sudo yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+        sudo usermod -a -G docker $USER
 
-    # Bazel
-    sudo apt install apt-transport-https curl gnupg
-    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
-    sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+    else
+        # Install
+        sudo apt update
+        curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+        sudo apt install -y neovim nodejs tmux zsh make 
 
-    sudo apt update && sudo apt install bazel
+        # Docker
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+        sudo apt install docker-ce
+        sudo usermod -a -G docker $USER
+        sudo chmod 666 /var/run/docker.sock
+
+        # Bazel
+        sudo apt install apt-transport-https curl gnupg
+        curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
+        sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+
+        sudo apt update && sudo apt install bazel
+    fi
     # Miniconda
     CONDA_FILE_NAME="Miniconda3-latest-Linux-x86_64.sh"
+
 fi
 
 # Miniconda
