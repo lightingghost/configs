@@ -67,10 +67,10 @@ alias oldvim=vim
 
 export GCLOUD_PATH="/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "$GCLOUD_PATH/path.zsh.inc" ]; then . "$GCLOUD_PATH/path.zsh.inc"; fi
+if [ -f "$GCLOUD_PATH/path.zsh.inc" ]; then source "$GCLOUD_PATH/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "$GCLOUD_PATH/completion.zsh.inc" ]; then . "$GCLOUD_PATH/completion.zsh.inc"; fi
+if [ -f "$GCLOUD_PATH/completion.zsh.inc" ]; then source "$GCLOUD_PATH/completion.zsh.inc"; fi
 
 alias startcpu="gcloud compute instances start zzp-cpu --project=sc-lens-delivery --zone=us-west1-b"
 alias stopcpu="gcloud compute instances stop zzp-cpu --project=sc-lens-delivery --zone=us-west1-b"
@@ -83,3 +83,7 @@ alias sshtpu="gcloud compute firewall-rules create allow-ssh --direction=INGRESS
 
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
