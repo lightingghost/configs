@@ -45,6 +45,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
         # Install
         sudo apt update
         curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+        sudo add-apt-repository ppa:neovim-ppa/stable
         sudo apt install -y neovim nodejs tmux zsh make 
 
         # Docker
@@ -74,13 +75,19 @@ chmod a+x $CONDA_FILE_NAME
 rm ./$CONDA_FILE_NAME
 
 # neovim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-mkdir ~/.config/nvim
-ln -s ~/configs/vimrc ~/.vimrc
-ln -s ~/configs/init.vim ~/.config/nvim/init.vim
-conda install -c conda-forge neovim -y
-vim -c PlugInstall -c q -c q
+# curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+#     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# mkdir ~/.config/nvim
+# ln -s ~/configs/vimrc ~/.vimrc
+# ln -s ~/configs/init.vim ~/.config/nvim/init.vim
+# conda install -c conda-forge neovim -y
+# vim -c PlugInstall -c q -c q
+
+# nvchad
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 
+rm -rf ~/.config/nvim/lua/custom
+ln -s ~/configs/nvchad_config_nvim_lua_custom ~/.config/nvim/lua/custom
+nvim
 
 # tmux
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
