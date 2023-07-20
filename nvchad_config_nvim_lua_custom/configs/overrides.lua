@@ -1,3 +1,4 @@
+local cmp = require("cmp")
 local M = {}
 
 M.treesitter = {
@@ -50,6 +51,27 @@ M.nvimtree = {
         git = true,
       },
     },
+  },
+}
+
+M.cmp = {
+  completion = {
+    completeopt = "menu,menuone,noselect",
+  },
+
+  mapping = {
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item({behavior = cmp.SelectBehavior.Insert, select = true})
+      elseif require("luasnip").expand_or_jumpable() then
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
+    }),
   },
 }
 
