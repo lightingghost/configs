@@ -84,7 +84,7 @@ rm ./$CONDA_FILE_NAME
 # vim -c PlugInstall -c q -c q
 
 # nvchad
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 
 rm -rf ~/.config/nvim/lua/custom
 ln -s ~/configs/nvchad_config_nvim_lua_custom ~/.config/nvim/lua/custom
 nvim

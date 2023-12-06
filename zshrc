@@ -4,6 +4,20 @@ else
     source ~/antigen.zsh
 fi
 
+if [ -f /workspace/mlx/../vscode/prep_env.sh]; then
+  source /workspace/mlx/../vscode/prep_env.sh
+fi
+if [ -f /opt/tiger/mlx_deploy/mlxrc]; then
+  source /opt/tiger/mlx_deploy/mlxrc
+fi
+export PYTHONPATH=""
+# if [ -f /opt/tiger/mlx_deploy/pythonpath_rc ]; then
+#     source /opt/tiger/mlx_deploy/pythonpath_rc
+# fi
+# if [ -f /opt/tiger/rh2_bashrc ]; then
+#     source /opt/tiger/rh2_bashrc
+# fi
+# source /opt/tiger/mlx_deploy/userrc
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
