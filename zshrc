@@ -4,12 +4,16 @@ else
     source ~/antigen.zsh
 fi
 
-if [ -f /workspace/mlx/../vscode/prep_env.sh]; then
-  source /workspace/mlx/../vscode/prep_env.sh
-fi
-if [ -f /opt/tiger/mlx_deploy/mlxrc]; then
-  source /opt/tiger/mlx_deploy/mlxrc
-fi
+[[ -r /etc/cloudide_profile ]] && . /etc/cloudide_profile || true
+ 
+[[ -r ~/.cloudiderc ]] && . ~/.cloudiderc || true
+ 
+#if [[ -r /workspace/mlx/../vscode/prep_env.sh]]; then
+#  source /workspace/mlx/../vscode/prep_env.sh
+#fi
+#if [[ -r /opt/tiger/mlx_deploy/mlxrc]]; then
+#  source /opt/tiger/mlx_deploy/mlxrc
+#fi
 export PYTHONPATH=""
 # if [ -f /opt/tiger/mlx_deploy/pythonpath_rc ]; then
 #     source /opt/tiger/mlx_deploy/pythonpath_rc
@@ -95,8 +99,8 @@ alias stoptpu="gcloud alpha compute tpus tpu-vm stop zzp-dev-tpu --project=devsn
 alias sshtpu="gcloud compute firewall-rules create allow-ssh --direction=INGRESS --network=tpu --action=ALLOW --rules=tcp:22 --project=devsnapchat && gcloud alpha compute tpus tpu-vm ssh zzp-dev-tpu --project=devsnapchat --zone=us-central1-a --ssh-flag='-4 -L 9001:localhost:9001'"
 
 
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
