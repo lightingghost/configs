@@ -109,3 +109,4 @@ export NVM_DIR="$HOME/.nvm"
 export GRADLE_HOME=/opt/gradle/gradle-7.4.2
 export PATH=${PATH}:${GRADLE_HOME}/bin
 export PATH=$HOME/.local/bin:$PATH
+export PATH=/Users/odin/.local/bin:$PATH
