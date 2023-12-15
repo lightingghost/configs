@@ -4,9 +4,9 @@ COMPUTER_NAME="Toaster"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 # Mac OSX
     # Install
-    yes | sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/zzhou3/.zprofile
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
     brew install wget neovim node tmux -q
     brew tap microsoft/git
@@ -19,9 +19,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         CONDA_FILE_NAME="Miniconda3-latest-MacOSX-x86_64.sh"
     fi
 
-    #sudo scutil --set LocalHostName $COMPUTER_NAME
-    #sudo scutil --set ComputerName $COMPUTER_NAME
-    #sudo scutil --set HostName $COMPUTER_NAME
+    sudo scutil --set LocalHostName $COMPUTER_NAME
+    sudo scutil --set ComputerName $COMPUTER_NAME
+    sudo scutil --set HostName $COMPUTER_NAME
 
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     . /etc/os-release
