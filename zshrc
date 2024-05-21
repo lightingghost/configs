@@ -44,7 +44,6 @@ antigen apply
 setopt HIST_FIND_NO_DUPS
 
 if [[ $OSTYPE == *linux* ]]; then
-# export PATH="/home/odin/miniconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
     export CUDA_HOME="/usr/local/cuda"
     export PATH="$CUDA_HOME/bin:$PATH"
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
@@ -52,7 +51,8 @@ if [[ $OSTYPE == *linux* ]]; then
     export PATH="$PATH:$HOME/.cargo/bin"
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 else
-# export PATH="/Users/odin/miniconda3/bin:$PATH"  # commented out by conda initialize  # commented out by conda initialize
+    export ANDROID_HOME="$HOME/Library/Android/sdk"
+    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$PATH"
     export CUDA_HOME="/usr/local/cuda"
     export PATH="$CUDA_HOME/bin:$PATH"
     export DYLD_LIBRARY_PATH="/usr/local/cuda/lib:$DYLD_LIBRARY_PATH"
@@ -97,10 +97,21 @@ alias stopgpu="gcloud compute instances stop zzp-dev --project=sc-lens-delivery 
 alias starttpu="gcloud alpha compute tpus tpu-vm start zzp-dev-tpu --project=devsnapchat --zone=us-central1-a"
 alias stoptpu="gcloud alpha compute tpus tpu-vm stop zzp-dev-tpu --project=devsnapchat --zone=us-central1-a"
 alias sshtpu="gcloud compute firewall-rules create allow-ssh --direction=INGRESS --network=tpu --action=ALLOW --rules=tcp:22 --project=devsnapchat && gcloud alpha compute tpus tpu-vm ssh zzp-dev-tpu --project=devsnapchat --zone=us-central1-a --ssh-flag='-4 -L 9001:localhost:9001'"
+alias startz="open -a /Applications/Zscaler/Zscaler.app --hide; sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl load {} \;"
+alias killz="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl unload {} \;;sudo find /Library/LaunchDaemons -name '*zscaler*' -exec launchctl unload {} \;"
 
 
-#export PATH="$HOME/.jenv/bin:$PATH"
-#eval "$(jenv init -)"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+if [ "$(arch)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+export WINEPREFIX=~/wine
+wine-gptk(){MTL_HUD_ENABLED=1 WINEESYNC=1 WINEPREFIX=~/wine $(brew --prefix game-porting-toolkit)/bin/wine64 "$@"; }
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -110,3 +121,5 @@ export GRADLE_HOME=/opt/gradle/gradle-7.4.2
 export PATH=${PATH}:${GRADLE_HOME}/bin
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/Users/odin/.local/bin:$PATH
+
+export JVIEWER_JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-8-x64.jdk

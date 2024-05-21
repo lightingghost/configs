@@ -18,6 +18,28 @@
                 },
                 "rules": [
                     {
+                        "description": "shift to switch input language",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_shift"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "apple_vendor_keyboard_key_code": "language"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change Caps Lock as Layer 1, H/J/K/L to Arrow Keys",
                         "manipulators": [
                             {
@@ -55,7 +77,7 @@
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "apple_vendor_keyboard_key_code": "language"
+                                        "key_code": "caps_lock"
                                     }
                                 ],
                                 "type": "basic"
