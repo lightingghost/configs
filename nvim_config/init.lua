@@ -42,9 +42,17 @@ end)
 if vim.g.neovide then
   vim.o.guifont = "IosevkaTerm Nerd Font:h14"
   vim.g.neovide_input_use_logo = 1
-  vim.keymap.set('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
-  vim.keymap.set('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-  vim.keymap.set('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-  vim.keymap.set('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-  vim.keymap.set('v', '<D-c>', '+y<CR>', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+  vim.api.nvim_set_keymap('v', '<D-c>', '+y<CR>', { noremap = true, silent = true})
+
+  vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
+  vim.keymap.set('i', '<D-s>', '<ESC>:w<CR>') -- Save
+  vim.keymap.set('v', '<D-c>', '"+y') -- Copy
+  vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
+  vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
+  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
 end
