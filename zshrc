@@ -48,6 +48,7 @@ if [[ $OSTYPE == *linux* ]]; then
     export PATH="$CUDA_HOME/bin:$PATH"
     export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64"
+    export PATH="$PATH:/opt/bin"
     export PATH="$PATH:$HOME/.cargo/bin"
     export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 else
@@ -102,16 +103,6 @@ alias killz="find /Library/LaunchAgents -name '*zscaler*' -exec launchctl unload
 
 
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
-if [ "$(arch)" = "arm64" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
-
-export WINEPREFIX=~/wine
-wine-gptk(){MTL_HUD_ENABLED=1 WINEESYNC=1 WINEPREFIX=~/wine $(brew --prefix game-porting-toolkit)/bin/wine64 "$@"; }
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
