@@ -6,7 +6,28 @@ return {
       require "configs.conform"
     end,
   },
-
+  {
+    "kawre/leetcode.nvim",
+    lazy = false,
+    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+    dependencies = {
+        "nvim-telescope/telescope.nvim",
+        -- "ibhagwan/fzf-lua",
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+    },
+    opts = {
+        -- configuration goes here
+      lang = "python3"
+    },
+  },
+  {
+    "VonHeikemen/fine-cmdline.nvim",
+    lazy = false,
+    dependencies = {
+        "MunifTanjim/nui.nvim",
+    },
+  },
   -- These are some examples, uncomment them if you want to see them work!
   -- {
   --   "neovim/nvim-lspconfig",
