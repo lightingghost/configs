@@ -51,3 +51,23 @@ sudo update-initramfs -u
 #powersave governor
 sudo apt install cpufrequtils
 echo 'GOVERNOR="powersave"' | sudo tee /etc/default/cpufrequtils > /dev/null
+
+# install and set auto reset for tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
+
+sudo apt update
+sudo apt install networkd-dispatcher
+sudo systemctl enable --now networkd-dispatcher
+cat << 'EOF' | sudo tee /etc/networkd-dispatcher/routable.d/99-tailscale-reset > /dev/null
+#!/bin/bash
+
+# Change 'eth0' to your actual interface name if different
+if [ "$IFACE" = "eth0" ]; then
+    sleep 3 
+    /usr/bin/tailscale serve reset
+    /usr/bin/tailscale funnel --bg 8123
+fi
+EOF
+
+sudo chmod +x /etc/networkd-dispatcher/routable.d/99-tailscale-reset
+sudo chown root:root /etc/networkd-dispatcher/routable.d/99-tailscale-reset
